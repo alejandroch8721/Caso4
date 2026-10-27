@@ -1,0 +1,269 @@
+:root {
+  color-scheme: light;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #172b4d;
+  background: #f8fafc;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --accent: #175cd3;
+  --accent-hover: #1447a6;
+  --muted: #475467;
+  --surface: #ffffff;
+  --border: #d0d5dd;
+  --danger: #b42318;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: #f8fafc;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  min-width: 44px;
+  min-height: 44px;
+  border: 0;
+  border-radius: 0.6rem;
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #84adff;
+  outline-offset: 2px;
+}
+
+.app-shell {
+  width: min(100% - 2rem, 760px);
+  margin: 0 auto;
+  padding: clamp(1.5rem, 5vw, 3.5rem) 0;
+}
+
+.screen-header,
+.detail-heading,
+.task-row,
+.filter-bar,
+.form-actions,
+.detail-actions {
+  display: flex;
+  align-items: center;
+}
+
+.screen-header,
+.detail-heading,
+.task-row {
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.screen-header {
+  margin-bottom: 2rem;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  line-height: 1.2;
+}
+
+.filter-bar {
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  padding: 0.3rem;
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  background: var(--surface);
+}
+
+.filter-button {
+  flex: 1;
+  background: transparent;
+  color: var(--muted);
+}
+
+.filter-button[aria-pressed="true"] {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.primary-button,
+.status-button {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.primary-button:hover,
+.status-button:hover,
+.filter-button[aria-pressed="true"]:hover {
+  background: var(--accent-hover);
+}
+
+.task-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.task-row {
+  width: 100%;
+  min-height: 4.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: #172b4d;
+  text-align: left;
+}
+
+.task-title {
+  overflow-wrap: anywhere;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.task-title.is-done {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.task-status,
+.status-label {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.empty-state {
+  padding: 2.5rem 1rem;
+  border: 1px dashed var(--border);
+  border-radius: 0.8rem;
+  background: var(--surface);
+  color: var(--muted);
+  text-align: center;
+}
+
+.error-message {
+  margin: 0 0 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid #fecdca;
+  border-radius: 0.6rem;
+  background: #fef3f2;
+  color: #912018;
+}
+
+.detail-view,
+.task-form {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.detail-heading {
+  justify-content: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.back-button,
+.secondary-button {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: #172b4d;
+}
+
+.detail-description {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.detail-status {
+  margin: 0;
+}
+
+.detail-actions {
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.danger-button {
+  border: 1px solid var(--danger);
+  background: #ffffff;
+  color: var(--danger);
+}
+
+.danger-button:hover {
+  background: #fef3f2;
+}
+
+.task-form label {
+  display: grid;
+  gap: 0.5rem;
+  font-weight: 700;
+}
+
+.task-form input,
+.task-form textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.75rem;
+  border: 1px solid #667085;
+  border-radius: 0.5rem;
+  background: #ffffff;
+  color: #172b4d;
+}
+
+.task-form textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.validation-message {
+  margin: -0.75rem 0 0;
+  color: #912018;
+}
+
+.form-actions {
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+@media (max-width: 480px) {
+  .app-shell {
+    width: min(100% - 1.5rem, 760px);
+  }
+
+  .screen-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .screen-header .primary-button {
+    width: 100%;
+  }
+
+  .task-row {
+    align-items: flex-start;
+  }
+
+  .detail-actions > button,
+  .form-actions > button {
+    flex: 1 1 100%;
+  }
+}
